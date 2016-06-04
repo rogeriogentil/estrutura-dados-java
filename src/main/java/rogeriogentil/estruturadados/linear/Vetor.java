@@ -14,7 +14,7 @@ public class Vetor {
 		return this.tamanho;
 	}
 	
-	public void adiciona(String elemento) throws Exception {
+	public void adicionar(String elemento) throws Exception {
 		/* Algoritmo pouco eficiente */
 //		for (int i = 0; i < this.elementos.length; i++) {
 //			if (this.elementos[i] == null) {
@@ -31,7 +31,7 @@ public class Vetor {
 		}
 	}
 	
-	public boolean adicionaBoolean(String elemento) {
+	public boolean adicionarBoolean(String elemento) {
 		if (tamanho < elementos.length) {
 			elementos[tamanho] = elemento;
 			tamanho++;
@@ -41,7 +41,13 @@ public class Vetor {
 		return false;
 	}
 	
-	
+	public String buscar(int posicao) {
+		if (!(posicao >= 0 && posicao < tamanho)) {
+			throw new IllegalArgumentException("Posição inválida");
+		}
+		
+		return this.elementos[posicao];
+	}
 
 	@Override
 	public String toString() {
