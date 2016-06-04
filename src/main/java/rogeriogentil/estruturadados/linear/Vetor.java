@@ -49,6 +49,16 @@ public class Vetor {
 		return this.elementos[posicao];
 	}
 
+	public boolean existeElemento(String elemento) {
+		for (int i = 0; i < this.tamanho; i ++) {
+			if (this.elementos[i].equals(elemento)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 	@Override
 	public String toString() {
 		// Método padrão

@@ -65,4 +65,16 @@ public class VetorTest {
 	public void deveLancarExcecaoAoTentarAcessarPosicaoAcimaDaCapacidade() {
 		String s = vetor.buscar(10000);
 	}
+	
+	@Test
+	public void deveIndicarQueExisteElemento() {
+		boolean existeElemento = vetor.existeElemento("2º elemento");
+		assertTrue(existeElemento);
+	}
+	
+	@Test
+	public void deveIndicarQueNaoExisteElemento() {
+		boolean existeElemento = vetor.existeElemento("blablabla");
+		assertFalse(existeElemento);
+	}
 }
