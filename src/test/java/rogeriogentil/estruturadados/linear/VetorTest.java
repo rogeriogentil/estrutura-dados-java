@@ -77,4 +77,24 @@ public class VetorTest {
 		boolean existeElemento = vetor.existeElemento("blablabla");
 		assertFalse(existeElemento);
 	}
+	
+	@Test
+	public void deveAdicionarUmElementoEmUmPosicao() {
+		int posicao = 0;
+		Vetor vetor = new Vetor(10);
+		
+		vetor.adicionarBoolean("B");
+		vetor.adicionarBoolean("C");
+		vetor.adicionarBoolean("D");
+		vetor.adicionarBoolean("E");
+		vetor.adicionarBoolean("F");
+		
+		System.out.println(vetor);
+		
+		vetor.adicionar("A", posicao);		
+		
+		assertEquals("A", vetor.buscar(posicao));
+		
+		System.out.println(vetor);
+	}
 }
