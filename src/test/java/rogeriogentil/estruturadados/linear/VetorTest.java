@@ -81,7 +81,7 @@ public class VetorTest {
 	}
 	
 	@Test
-	public void deveAdicionarUmElementoEmUmPosicao() {
+	public void deveAdicionarUmElementoEmUmaPosicao() {
 		int posicao = 0;
 		Vetor vetor = new Vetor(10);
 		
