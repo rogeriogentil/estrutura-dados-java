@@ -91,13 +91,10 @@ public class VetorTest {
 		vetor.adicionarBoolean("E");
 		vetor.adicionarBoolean("F");
 		
-		System.out.println(vetor);
-		
 		vetor.adicionar("A", posicao);		
 		
 		assertEquals("A", vetor.buscar(posicao));
-		
-		System.out.println(vetor);
+		assertEquals("[A, B, C, D, E, F]", vetor.toString());
 	}
 	
 	@Test
