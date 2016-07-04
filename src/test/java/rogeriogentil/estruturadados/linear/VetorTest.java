@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Ignore;
 
 public class VetorTest {
 
@@ -27,6 +28,7 @@ public class VetorTest {
 		vetor.adicionar("2");
 	}
 	
+	@Ignore // Adicionado depois de adicionar o método Vetor#aumentarCapacidade() 
 	@Test(expected = Exception.class)
 	public void deveLancarExcecaoAoSuperarCapacidade() throws Exception {
 		vetor = new Vetor(2);
@@ -96,5 +98,21 @@ public class VetorTest {
 		assertEquals("A", vetor.buscar(posicao));
 		
 		System.out.println(vetor);
+	}
+	
+	@Test
+	public void deveAdicionarUmElementoAumentandoSuaCapacidade() throws Exception {
+		int capacidade = 5;
+		Vetor vetor = new Vetor(capacidade);
+		
+		vetor.adicionar("A");
+		vetor.adicionar("B");
+		vetor.adicionar("C");
+		vetor.adicionar("D");
+		vetor.adicionar("E");
+		
+		vetor.adicionar("F");
+		
+		assertEquals(capacidade * 2, vetor.getCapacidade());
 	}
 }

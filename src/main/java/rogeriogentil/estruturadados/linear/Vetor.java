@@ -4,12 +4,18 @@ public class Vetor {
 	
 	private String[] elementos;
 	private int tamanho;
+	private int capacidade;
 
 	public Vetor(int capacidade) {
+		this.capacidade = capacidade;
 		this.elementos = new String[capacidade];
 		this.tamanho = 0;
 	}
-	
+		
+	public int getCapacidade() {
+		return this.capacidade;
+	}
+
 	public int tamanho() {
 		return this.tamanho;
 	}
@@ -22,6 +28,7 @@ public class Vetor {
 //				break;
 //			}
 //		}
+		aumentarCapacidade();
 		
 		if (tamanho < elementos.length) { 
 			this.elementos[this.tamanho] = elemento;
@@ -32,6 +39,8 @@ public class Vetor {
 	}
 	
 	public boolean adicionarBoolean(String elemento) {
+		aumentarCapacidade();
+		
 		if (tamanho < elementos.length) {
 			elementos[tamanho] = elemento;
 			tamanho++;
@@ -46,12 +55,27 @@ public class Vetor {
 			throw new IllegalArgumentException("Posição inválida");
 		}
 		
+		aumentarCapacidade();
+		
 		for (int i = this.tamanho - 1; i >= posicao; i--) {
 			this.elementos[i + 1] = this.elementos[i];
 		}
 		
 		this.elementos[posicao] = elemento;
 		this.tamanho++;
+	}
+	
+	private void aumentarCapacidade() {
+		if (this.tamanho == this.elementos.length) {
+			 this.capacidade = this.elementos.length * 2;
+			 String[] novosElementos = new String[capacidade];
+			
+			for (int i = 0; i < this.elementos.length; i++) {
+				novosElementos[i] = this.elementos[i];
+			}
+			
+			this.elementos = novosElementos;
+		}
 	}
 	
 	public String buscar(int posicao) {
