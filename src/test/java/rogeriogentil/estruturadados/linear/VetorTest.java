@@ -112,4 +112,52 @@ public class VetorTest {
 		
 		assertEquals(capacidade * 2, vetor.getCapacidade());
 	}
+	
+	@Test
+	public void deveRemoverUmElementoDeUmaPosicao() throws Exception {
+		int posicao = 1;
+		Vetor vetor = new Vetor(10);
+		
+		vetor.adicionar("A");
+		vetor.adicionar("G");
+		vetor.adicionar("B");
+		vetor.adicionar("C");
+		vetor.adicionar("D");
+		vetor.adicionar("E");
+		
+		vetor.remover(posicao);
+		
+		assertEquals("B", vetor.buscar(posicao));
+		assertEquals("[A, B, C, D, E]", vetor.toString());
+	}
+	
+	@Test
+	public void deveRemoverUltimoElemento() throws Exception { // deve remover sem lançar exceção
+		int posicao = 4;
+		Vetor vetor = new Vetor(5);
+		
+		vetor.adicionar("A");
+		vetor.adicionar("B");
+		vetor.adicionar("C");
+		vetor.adicionar("D");
+		vetor.adicionar("E");
+		
+		vetor.remover(posicao);
+		
+		assertEquals("[A, B, C, D]", vetor.toString());
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void deveLancarExcecaoAoTentarRemoverElementoSuperiorAoTamanho() throws Exception {
+		int posicao = 5;
+		Vetor vetor = new Vetor(5);
+		
+		vetor.adicionar("A");
+		vetor.adicionar("B");
+		vetor.adicionar("C");
+		vetor.adicionar("D");
+		vetor.adicionar("E");
+		
+		vetor.remover(posicao);
+	}
 }
