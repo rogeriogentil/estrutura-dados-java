@@ -160,4 +160,34 @@ public class VetorTest {
 		
 		vetor.remover(posicao);
 	}
+	
+	@Test
+	public void deveRemoverUmElemento() throws Exception {
+		Vetor vetor = new Vetor(5);
+		
+		vetor.adicionar("A");
+		vetor.adicionar("B");
+		vetor.adicionar("C");
+		vetor.adicionar("D");
+		vetor.adicionar("E");
+		
+		vetor.remover("C");
+		
+		assertEquals("[A, B, D, E]", vetor.toString());
+		assertEquals(4, vetor.tamanho());
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void deveLancarExcecaoAoTentarRemoverElementoInexistente() throws Exception {
+		Vetor vetor = new Vetor(5);
+		
+		vetor.adicionar("A");
+		vetor.adicionar("B");
+		vetor.adicionar("C");
+		vetor.adicionar("D");
+		vetor.adicionar("E");
+		
+		vetor.remover("Z");
+	}
 }

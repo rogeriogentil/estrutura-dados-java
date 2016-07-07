@@ -85,6 +85,16 @@ public class Vetor {
 		
 		return this.elementos[posicao];
 	}
+	
+	public int buscar(String elemento) {
+		for (int i = 0; i < this.tamanho; i++) {
+			if (this.elementos[i].equals(elemento)) {
+				return i;
+			}
+		}
+		
+		return -1;
+	}
 
 	public boolean existeElemento(String elemento) {
 		for (int i = 0; i < this.tamanho; i ++) {
@@ -106,6 +116,11 @@ public class Vetor {
 		}
 		
 		this.tamanho--;
+	}
+	
+	public void remover(String elemento) {
+		int posicao = this.buscar(elemento);
+		this.remover(posicao);
 	}
 	
 	@Override
