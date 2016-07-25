@@ -2,6 +2,8 @@ package rogeriogentil.estruturadados.linear;
 
 import org.junit.Test;
 
+import rogeriogentil.estruturadados.modelo.Contato;
+
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -189,5 +191,18 @@ public class VetorTest {
 		vetor.adicionar("E");
 		
 		vetor.remover("Z");
+	}
+	
+	@Test
+	public void deveCriarUmVetorDeUmTipoGenerico() throws Exception {
+		Vetor vetor = new Vetor(3);
+		
+		Contato contato1 = new Contato("Fulano", "3371-7178", "fulano@gmail.com");
+		Contato contato2 = new Contato("Ciclano", "3372-5713", "ciclano@yahoo.com.br");
+		Contato contato3 = new Contato("Beltrano", "3371-1156", "beltrano@outlook.com");
+		
+		vetor.adicionar(contato1);
+		vetor.adicionar(contato2);
+		vetor.adicionar(contato3);
 	}
 }
