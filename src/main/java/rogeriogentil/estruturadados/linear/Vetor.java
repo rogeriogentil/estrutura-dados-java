@@ -2,13 +2,13 @@ package rogeriogentil.estruturadados.linear;
 
 public class Vetor {
 	
-	private String[] elementos;
+	private Object[] elementos;
 	private int tamanho;
 	private int capacidade;
 
 	public Vetor(int capacidade) {
 		this.capacidade = capacidade;
-		this.elementos = new String[capacidade];
+		this.elementos = new Object[capacidade];
 		this.tamanho = 0;
 	}
 		
@@ -20,7 +20,7 @@ public class Vetor {
 		return this.tamanho;
 	}
 	
-	public void adicionar(String elemento) throws Exception {
+	public void adicionar(Object elemento) throws Exception {
 		/* Algoritmo pouco eficiente */
 //		for (int i = 0; i < this.elementos.length; i++) {
 //			if (this.elementos[i] == null) {
@@ -38,7 +38,7 @@ public class Vetor {
 		}
 	}
 	
-	public boolean adicionarBoolean(String elemento) {
+	public boolean adicionarBoolean(Object elemento) {
 		aumentarCapacidade();
 		
 		if (tamanho < elementos.length) {
@@ -50,7 +50,7 @@ public class Vetor {
 		return false;
 	}
 	
-	public void adicionar(String elemento, int posicao) {
+	public void adicionar(Object elemento, int posicao) {
 		if (!(posicao >= 0 && posicao < tamanho)) {
 			throw new IllegalArgumentException("Posição inválida");
 		}
@@ -68,7 +68,7 @@ public class Vetor {
 	private void aumentarCapacidade() {
 		if (this.tamanho == this.elementos.length) {
 			 this.capacidade = this.elementos.length * 2;
-			 String[] novosElementos = new String[capacidade];
+			 Object[] novosElementos = new Object[capacidade];
 			
 			for (int i = 0; i < this.elementos.length; i++) {
 				novosElementos[i] = this.elementos[i];
@@ -78,7 +78,7 @@ public class Vetor {
 		}
 	}
 	
-	public String buscar(int posicao) {
+	public Object buscar(int posicao) {
 		if (!(posicao >= 0 && posicao < tamanho)) {
 			throw new IllegalArgumentException("Posição inválida");
 		}
@@ -86,7 +86,7 @@ public class Vetor {
 		return this.elementos[posicao];
 	}
 	
-	public int buscar(String elemento) {
+	public int buscar(Object elemento) {
 		for (int i = 0; i < this.tamanho; i++) {
 			if (this.elementos[i].equals(elemento)) {
 				return i;
@@ -96,7 +96,7 @@ public class Vetor {
 		return -1;
 	}
 
-	public boolean existeElemento(String elemento) {
+	public boolean existeElemento(Object elemento) {
 		for (int i = 0; i < this.tamanho; i ++) {
 			if (this.elementos[i].equals(elemento)) {
 				return true;
@@ -118,7 +118,7 @@ public class Vetor {
 		this.tamanho--;
 	}
 	
-	public void remover(String elemento) {
+	public void remover(Object elemento) {
 		int posicao = this.buscar(elemento);
 		this.remover(posicao);
 	}

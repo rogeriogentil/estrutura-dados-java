@@ -50,7 +50,7 @@ public class VetorTest {
 	@Test
 	public void deveBuscarUmElemento() {
 		try {
-			String s = vetor.buscar(0);
+			Object s = vetor.buscar(0);
 			
 			assertEquals("1º elemento", s);
 		} catch (Exception e) {
@@ -60,12 +60,12 @@ public class VetorTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void deveLancarExcecaoAoTentarAcessarPosicaoNegativa() {
-		String s = vetor.buscar(-1);
+		vetor.buscar(-1);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void deveLancarExcecaoAoTentarAcessarPosicaoAcimaDaCapacidade() {
-		String s = vetor.buscar(10000);
+		vetor.buscar(10000);
 	}
 	
 	@Test
