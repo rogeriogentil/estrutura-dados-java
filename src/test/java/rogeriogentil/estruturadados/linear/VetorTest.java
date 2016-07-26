@@ -6,25 +6,15 @@ import rogeriogentil.estruturadados.modelo.Contato;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
 import org.junit.Ignore;
 
 public class VetorTest {
 
-	private Vetor vetor;
-	
-	@Before
-	public void antesDeCadaTeste() throws Exception {
-		vetor = new Vetor(3);
-		
-		vetor.adicionar("1º elemento");
-		vetor.adicionar("2º elemento");
-		vetor.adicionar("3º elemento");
-	}
+	private Vetor<Object> vetor;
 	
 	@Test
 	public void deveAdicionarElemento() throws Exception {
-		vetor = new Vetor(5);
+		vetor = new Vetor<Object>(5);
 		
 		vetor.adicionar("1");
 		vetor.adicionar("2");
@@ -33,7 +23,7 @@ public class VetorTest {
 	@Ignore // Adicionado depois de adicionar o método Vetor#aumentarCapacidade() 
 	@Test(expected = Exception.class)
 	public void deveLancarExcecaoAoSuperarCapacidade() throws Exception {
-		vetor = new Vetor(2);
+		vetor = new Vetor<Object>(2);
 		
 		vetor.adicionar("1º elemento");
 		vetor.adicionar("2º elemento");
@@ -44,6 +34,12 @@ public class VetorTest {
 	
 	@Test
 	public void deveImprimirElementos() {
+		vetor = new Vetor<Object>(5);
+		
+		vetor.adicionarBoolean("A");
+		vetor.adicionarBoolean("B");
+		vetor.adicionarBoolean("C");
+		
 		System.out.println(vetor.tamanho());
 		
 		System.out.println(vetor);
@@ -51,6 +47,11 @@ public class VetorTest {
 	
 	@Test
 	public void deveBuscarUmElemento() {
+		vetor = new Vetor<Object>(10);
+		
+		vetor.adicionarBoolean("1º elemento");
+		vetor.adicionarBoolean("2º elemento");
+		
 		try {
 			Object s = vetor.buscar(0);
 			
@@ -62,22 +63,35 @@ public class VetorTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void deveLancarExcecaoAoTentarAcessarPosicaoNegativa() {
+		vetor = new Vetor<Object>(1);
 		vetor.buscar(-1);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void deveLancarExcecaoAoTentarAcessarPosicaoAcimaDaCapacidade() {
+		vetor = new Vetor<Object>(100);
 		vetor.buscar(10000);
 	}
 	
 	@Test
 	public void deveIndicarQueExisteElemento() {
+		vetor = new Vetor<Object>(10);
+		
+		vetor.adicionarBoolean("1º elemento");
+		vetor.adicionarBoolean("2º elemento");
+		
 		boolean existeElemento = vetor.existeElemento("2º elemento");
 		assertTrue(existeElemento);
 	}
 	
 	@Test
 	public void deveIndicarQueNaoExisteElemento() {
+		vetor = new Vetor<Object>(10);
+		
+		vetor.adicionarBoolean("A");
+		vetor.adicionarBoolean("B");
+		vetor.adicionarBoolean("C");
+		
 		boolean existeElemento = vetor.existeElemento("blablabla");
 		assertFalse(existeElemento);
 	}
@@ -85,7 +99,7 @@ public class VetorTest {
 	@Test
 	public void deveAdicionarUmElementoEmUmaPosicao() {
 		int posicao = 0;
-		Vetor vetor = new Vetor(10);
+		vetor = new Vetor<Object>(10);
 		
 		vetor.adicionarBoolean("B");
 		vetor.adicionarBoolean("C");
@@ -102,7 +116,7 @@ public class VetorTest {
 	@Test
 	public void deveAdicionarUmElementoAumentandoSuaCapacidade() throws Exception {
 		int capacidade = 5;
-		Vetor vetor = new Vetor(capacidade);
+		vetor = new Vetor<Object>(capacidade);
 		
 		vetor.adicionar("A");
 		vetor.adicionar("B");
@@ -118,7 +132,7 @@ public class VetorTest {
 	@Test
 	public void deveRemoverUmElementoDeUmaPosicao() throws Exception {
 		int posicao = 1;
-		Vetor vetor = new Vetor(10);
+		vetor = new Vetor<Object>(10);
 		
 		vetor.adicionar("A");
 		vetor.adicionar("G");
@@ -136,7 +150,7 @@ public class VetorTest {
 	@Test
 	public void deveRemoverUltimoElemento() throws Exception { // deve remover sem lançar exceção
 		int posicao = 4;
-		Vetor vetor = new Vetor(5);
+		vetor = new Vetor<Object>(5);
 		
 		vetor.adicionar("A");
 		vetor.adicionar("B");
@@ -152,7 +166,7 @@ public class VetorTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void deveLancarExcecaoAoTentarRemoverElementoSuperiorAoTamanho() throws Exception {
 		int posicao = 5;
-		Vetor vetor = new Vetor(5);
+		vetor = new Vetor<Object>(5);
 		
 		vetor.adicionar("A");
 		vetor.adicionar("B");
@@ -165,7 +179,7 @@ public class VetorTest {
 	
 	@Test
 	public void deveRemoverUmElemento() throws Exception {
-		Vetor vetor = new Vetor(5);
+		vetor = new Vetor<Object>(5);
 		
 		vetor.adicionar("A");
 		vetor.adicionar("B");
@@ -182,7 +196,7 @@ public class VetorTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void deveLancarExcecaoAoTentarRemoverElementoInexistente() throws Exception {
-		Vetor vetor = new Vetor(5);
+		vetor = new Vetor<Object>(5);
 		
 		vetor.adicionar("A");
 		vetor.adicionar("B");
@@ -195,7 +209,7 @@ public class VetorTest {
 	
 	@Test
 	public void deveCriarUmVetorDeUmTipoGenerico() throws Exception {
-		Vetor vetor = new Vetor(3);
+		Vetor<Contato> vetor = new Vetor<Contato>(3);
 		
 		Contato contato1 = new Contato("Fulano", "3371-7178", "fulano@gmail.com");
 		Contato contato2 = new Contato("Ciclano", "3372-5713", "ciclano@yahoo.com.br");

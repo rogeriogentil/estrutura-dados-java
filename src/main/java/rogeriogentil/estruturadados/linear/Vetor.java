@@ -1,14 +1,24 @@
 package rogeriogentil.estruturadados.linear;
 
-public class Vetor {
+import java.lang.reflect.Array;
+
+public class Vetor<T> {
 	
-	private Object[] elementos;
+	private T[] elementos;
 	private int tamanho;
 	private int capacidade;
 
+	@SuppressWarnings("unchecked")
 	public Vetor(int capacidade) {
 		this.capacidade = capacidade;
-		this.elementos = new Object[capacidade];
+		this.elementos = (T[]) new Object[capacidade];
+		this.tamanho = 0;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Vetor(Class<T> tipoDeClasse, int capacidade) {
+		this.capacidade = capacidade;
+		this.elementos = (T[]) Array.newInstance(tipoDeClasse, capacidade);
 		this.tamanho = 0;
 	}
 		
@@ -20,7 +30,7 @@ public class Vetor {
 		return this.tamanho;
 	}
 	
-	public void adicionar(Object elemento) throws Exception {
+	public void adicionar(T elemento) throws Exception {
 		/* Algoritmo pouco eficiente */
 //		for (int i = 0; i < this.elementos.length; i++) {
 //			if (this.elementos[i] == null) {
@@ -38,7 +48,7 @@ public class Vetor {
 		}
 	}
 	
-	public boolean adicionarBoolean(Object elemento) {
+	public boolean adicionarBoolean(T elemento) {
 		aumentarCapacidade();
 		
 		if (tamanho < elementos.length) {
@@ -50,7 +60,7 @@ public class Vetor {
 		return false;
 	}
 	
-	public void adicionar(Object elemento, int posicao) {
+	public void adicionar(T elemento, int posicao) {
 		if (!(posicao >= 0 && posicao < tamanho)) {
 			throw new IllegalArgumentException("Posição inválida");
 		}
@@ -65,20 +75,21 @@ public class Vetor {
 		this.tamanho++;
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void aumentarCapacidade() {
 		if (this.tamanho == this.elementos.length) {
-			 this.capacidade = this.elementos.length * 2;
-			 Object[] novosElementos = new Object[capacidade];
+			this.capacidade = this.elementos.length * 2;
+			T[] novosElementos = (T[]) new Object[capacidade];
 			
 			for (int i = 0; i < this.elementos.length; i++) {
 				novosElementos[i] = this.elementos[i];
 			}
-			
+		
 			this.elementos = novosElementos;
 		}
 	}
 	
-	public Object buscar(int posicao) {
+	public T buscar(int posicao) {
 		if (!(posicao >= 0 && posicao < tamanho)) {
 			throw new IllegalArgumentException("Posição inválida");
 		}
@@ -86,7 +97,7 @@ public class Vetor {
 		return this.elementos[posicao];
 	}
 	
-	public int buscar(Object elemento) {
+	public int buscar(T elemento) {
 		for (int i = 0; i < this.tamanho; i++) {
 			if (this.elementos[i].equals(elemento)) {
 				return i;
@@ -96,7 +107,7 @@ public class Vetor {
 		return -1;
 	}
 
-	public boolean existeElemento(Object elemento) {
+	public boolean existeElemento(T elemento) {
 		for (int i = 0; i < this.tamanho; i ++) {
 			if (this.elementos[i].equals(elemento)) {
 				return true;
@@ -118,7 +129,7 @@ public class Vetor {
 		this.tamanho--;
 	}
 	
-	public void remover(Object elemento) {
+	public void remover(T elemento) {
 		int posicao = this.buscar(elemento);
 		this.remover(posicao);
 	}
