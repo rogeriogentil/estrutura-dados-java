@@ -233,4 +233,19 @@ public class VetorTest {
 		
 		assertThat(ultimoIndice, is(equalTo(2)));
 	}
+	
+	@Test
+	public void deveObterUltimoIndiceDeUmElemento() throws Exception {
+		vetor = new Vetor<Object>(5);
+		
+		vetor.adicionar("A");
+		vetor.adicionar("B");
+		vetor.adicionar("A");
+		vetor.adicionar("A");
+		vetor.adicionar("B");		
+
+		int ultimoIndice = vetor.obterUltimoIndice("A");
+		
+		assertThat(ultimoIndice, is(equalTo(3)));
+	}
 }

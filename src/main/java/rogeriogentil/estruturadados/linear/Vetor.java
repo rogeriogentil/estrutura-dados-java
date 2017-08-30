@@ -138,6 +138,16 @@ public class Vetor<T> {
 		return tamanho - 1;
 	}
 	
+	public int obterUltimoIndice(T elemento) {
+		for (int i = tamanho - 1; i >= 0; i--) {
+			if (this.elementos[i].equals(elemento)) {
+				return i;
+			}
+		}
+		
+		return -1;
+	}
+	
 	@Override
 	public String toString() {
 		// Método padrão
