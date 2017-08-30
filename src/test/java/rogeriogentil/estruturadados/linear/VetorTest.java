@@ -248,4 +248,17 @@ public class VetorTest {
 		
 		assertThat(ultimoIndice, is(equalTo(3)));
 	}
+	
+	public void deveLimparUmVetor() throws Exception {
+		vetor = new Vetor<Object>(5);
+		
+		vetor.adicionar("A");
+		vetor.adicionar("B");
+		vetor.adicionar("C");
+		vetor.adicionar("D");
+		
+		vetor.limpar();
+		
+		assertThat(vetor.tamanho(), is(equalTo(0)));
+	}
 }

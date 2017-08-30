@@ -148,6 +148,18 @@ public class Vetor<T> {
 		return -1;
 	}
 	
+	public void limpar() {
+		// 1ª opção
+		for (int i = tamanho - 1; i >=0; i--) {
+			this.elementos[i] = null;
+		}
+		
+		tamanho = 0;
+		
+		// 2º opção
+//		this.elementos = (T[]) new Object[this.elementos.length];
+	}
+	
 	@Override
 	public String toString() {
 		// Método padrão
