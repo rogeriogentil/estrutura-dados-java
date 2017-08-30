@@ -134,6 +134,10 @@ public class Vetor<T> {
 		this.remover(posicao);
 	}
 	
+	public int obterUltimoIndice() {
+		return tamanho - 1;
+	}
+	
 	@Override
 	public String toString() {
 		// Método padrão

@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import rogeriogentil.estruturadados.modelo.Contato;
 
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import org.junit.Ignore;
@@ -218,5 +219,18 @@ public class VetorTest {
 		vetor.adicionar(contato1);
 		vetor.adicionar(contato2);
 		vetor.adicionar(contato3);
+	}
+	
+	@Test
+	public void deveObterUltimoIndice() throws Exception {
+		vetor = new Vetor<Object>(5);
+		
+		vetor.adicionar("A");
+		vetor.adicionar("B");
+		vetor.adicionar("C");
+
+		int ultimoIndice = vetor.obterUltimoIndice();
+		
+		assertThat(ultimoIndice, is(equalTo(2)));
 	}
 }
