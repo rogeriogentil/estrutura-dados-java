@@ -41,7 +41,7 @@ public class VetorTest {
 		vetor.adicionarBoolean("B");
 		vetor.adicionarBoolean("C");
 		
-		System.out.println(vetor.tamanho());
+		System.out.println(vetor.getTamanho());
 		
 		System.out.println(vetor);
 	}
@@ -191,7 +191,7 @@ public class VetorTest {
 		vetor.remover("C");
 		
 		assertEquals("[A, B, D, E]", vetor.toString());
-		assertEquals(4, vetor.tamanho());
+		assertEquals(4, vetor.getTamanho());
 	}
 	
 	
@@ -259,6 +259,6 @@ public class VetorTest {
 		
 		vetor.limpar();
 		
-		assertThat(vetor.tamanho(), is(equalTo(0)));
+		assertThat(vetor.getTamanho(), is(equalTo(0)));
 	}
 }
